@@ -1,0 +1,132 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OFFLINE — PRINT & PHYSICAL</title><style>
+:root{--wine:#81132f;--ink:#111;--paper:#fbfaf7}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--wine);outline-offset:5px}.mast{background:var(--wine);color:white;padding:22px clamp(22px,5vw,90px);display:flex;align-items:center;justify-content:space-between;gap:16px}.mast strong{font-size:clamp(18px,3vw,43px);font-weight:900;letter-spacing:-.055em}.mast small{font-size:10px;font-weight:800;letter-spacing:.08em}.intro{padding:clamp(45px,7vw,105px) clamp(24px,8vw,150px) 30px;display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:35px}.intro h1{font-size:clamp(75px,13vw,200px);line-height:.75;letter-spacing:-.095em;margin:0;font-weight:950}.intro h1 span{color:var(--wine)}.intro p{max-width:350px;font-size:clamp(17px,1.8vw,24px);letter-spacing:-.045em;line-height:1.15;margin:0 0 12px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--wine)}.desk{position:relative;margin:40px auto 0;max-width:1500px;min-height:980px;padding:40px 6vw 100px;background:radial-gradient(ellipse at 40% 40%,#fff 20%,#f8f7f4 100%);overflow:hidden}.desk:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 70px,rgba(40,20,20,.013) 71px 72px);pointer-events:none}.object-label{font-size:11px;letter-spacing:.14em;font-weight:900;color:var(--wine);margin:0 0 12px}.hint{font-size:12px;color:#6d6665;line-height:1.5}.paper-area{position:relative;z-index:3;width:min(62vw,800px);margin:40px 0 0 6%;}.paper-stage{position:relative;perspective:1600px;aspect-ratio:1.40;width:100%;filter:drop-shadow(20px 32px 24px rgba(39,22,20,.23));transition:filter .6s}.paper-stage.open{filter:drop-shadow(9px 24px 16px rgba(39,22,20,.19))}.paper-inside{position:absolute;inset:0;display:flex;opacity:0;transform:scaleX(.54);transform-origin:right center;transition:opacity .45s,transform .9s cubic-bezier(.2,.7,.2,1);pointer-events:none}.paper-stage.open .paper-inside{opacity:1;transform:scaleX(1)}.paper-inside img{width:50%;height:100%;object-fit:fill}.paper-closed{position:absolute;right:0;top:0;width:52%;height:100%;transform-style:preserve-3d;transform-origin:left center;transition:transform 1.1s cubic-bezier(.2,.65,.25,1),right .9s,width .9s;z-index:3}.paper-closed:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.12),transparent 10%,transparent 93%,rgba(0,0,0,.08));z-index:5;pointer-events:none}.paper-closed img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;backface-visibility:hidden}.paper-closed .back{transform:rotateY(180deg)}.paper-stage.open .paper-closed{transform:rotateY(-180deg);right:0;width:50%}.paper-button{border:0;background:transparent;padding:0;display:block;width:100%;text-align:left}.paper-button:hover .paper-stage:not(.open){transform:translateY(-5px)}.paper-button .paper-stage{transition:transform .25s,filter .6s}.paper-spine{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(0,0,0,.12);z-index:2;opacity:0}.paper-stage.open .paper-spine{opacity:1}.paper-label{margin-top:18px;display:flex;justify-content:space-between;max-width:800px}.flyer-area{position:absolute;right:6%;top:310px;width:min(28vw,335px);z-index:4;transform:rotate(8deg)}.flyer-scene{perspective:1100px;width:100%;aspect-ratio:1024/1450}.flyer-card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.25,.7,.2,1);box-shadow:14px 23px 28px rgba(30,18,20,.2)}.flyer-card.flipped{transform:rotateY(180deg)}.flyer-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;backface-visibility:hidden}.flyer-card img:last-child{transform:rotateY(180deg)}.flyer-button{display:block;border:0;background:transparent;padding:0;width:100%}.flyer-button:hover .flyer-card{box-shadow:16px 30px 36px rgba(30,18,20,.28)}.flyer-area .object-label{margin-bottom:16px}.stickers{position:relative;margin:-50px auto 0;max-width:1400px;padding:80px 7vw 115px;min-height:560px}.stickers h2{font-size:clamp(48px,8vw,110px);letter-spacing:-.08em;line-height:.9;margin:0}.stickers h2 span{color:var(--wine)}.stickers p{max-width:400px;font-size:15px;line-height:1.4}.sticker-board{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 36px;margin-top:60px}.sticker{background:transparent;border:0;padding:0;transition:transform .25s;filter:drop-shadow(5px 9px 5px rgba(0,0,0,.13));max-width:100%}.sticker img{display:block;max-width:100%;height:auto;mix-blend-mode:multiply}.sticker:nth-child(1){width:210px;transform:rotate(-8deg)}.sticker:nth-child(2){width:90px;transform:rotate(14deg)}.sticker:nth-child(3){width:140px;transform:rotate(-13deg)}.sticker:nth-child(4){width:140px;transform:rotate(8deg)}.sticker:nth-child(5){width:250px;transform:rotate(-4deg)}.sticker:nth-child(6){width:200px;transform:rotate(9deg)}.sticker:nth-child(7){width:165px;transform:rotate(-7deg)}.sticker:nth-child(8){width:250px;transform:rotate(5deg)}.sticker:hover{transform:rotate(0deg) translateY(-12px) scale(1.06)}.footer{border-top:1px solid #ddd;padding:24px 7vw;display:flex;justify-content:space-between;font-size:11px;font-weight:800;letter-spacing:.12em}.tag{display:inline-block;border:1px solid #b6a5a6;color:var(--wine);padding:8px 11px;margin-top:10px;font-size:10px;font-weight:800;letter-spacing:.1em}.paper-closed .front{object-fit:fill}@media(max-width:850px){.intro{grid-template-columns:1fr}.desk{min-height:unset;padding:40px 6vw 80px}.paper-area{width:100%;margin:25px auto 0}.flyer-area{position:relative;top:auto;right:auto;width:min(65vw,310px);margin:65px auto 0;transform:rotate(5deg)}.stickers{margin:0;padding-top:50px}.sticker-board{gap:25px}.mast small{display:none}.paper-label{flex-wrap:wrap;gap:8px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+ 
+/* global burgundy cursor including clickable pointer */
+body{cursor:url("assets/cursor-wine.svg") 5 5,auto}
+a,button,[role=button],.street-sign{cursor:url("assets/cursor-hand-wine.svg") 8 2,pointer!important}
+.intro .eyebrow{margin-bottom:clamp(28px,4vw,65px)}
+.explore{color:var(--wine);text-decoration:none;background:#fff;transition:background .2s,color .2s}
+.explore:hover{background:var(--wine);color:#fff}
+.paper-stage.reverse .paper-closed{right:0;width:52%;transform:rotateY(-180deg)}
+.paper-stage.reverse .paper-inside{opacity:0}
+.paper-stage.reverse .paper-closed .front{visibility:hidden}
+.paper-stage.reverse .paper-closed .back{visibility:visible}
+.stickers{margin:0 auto;max-width:1500px;padding:55px 6vw 110px;min-height:0;background:#faf8f7;border-top:1px solid #e8dfe1}
+.sticker-heading h2{font-size:clamp(48px,7vw,105px)}
+.sticker-heading p{max-width:580px}
+.sticker-heading .eyebrow{margin-bottom:20px}
+.reset{border:1px solid var(--wine);background:transparent;color:var(--wine);padding:10px 15px;font-size:11px;font-weight:800;margin-top:16px}
+.reset:hover{background:var(--wine);color:white}
+.street-scene{height:clamp(350px,46vw,560px);position:relative;overflow:hidden;margin-top:30px;background:linear-gradient(140deg,#d7d5d0,#b3b4b2 60%,#9d9f9c);border:1px solid #ccc}
+.street-wall{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 74px,rgba(60,60,60,.12) 75px 77px),repeating-linear-gradient(90deg,transparent 0 180px,rgba(50,50,50,.06) 181px 183px)}
+.street-pole{position:absolute;width:28px;height:100%;left:50%;background:linear-gradient(90deg,#606767,#c5c9c6 38%,#6e7371 80%,#414847);box-shadow:15px 7px 22px #0003}
+.street-sign{position:absolute;left:50%;top:34%;width:min(75%,740px);height:clamp(140px,23vw,260px);transform:translate(-50%,-50%) rotate(-2deg);background:#f0f0eb;border:12px solid #222c30;box-shadow:12px 17px 17px #0005;overflow:hidden;transition:box-shadow .2s}
+.street-sign.ready{box-shadow:0 0 0 5px var(--wine),12px 17px 17px #0005}
+.sign-text{font-size:clamp(38px,7vw,105px);font-weight:950;letter-spacing:-.07em;text-align:center;line-height:1.25;color:#202a2c}
+.sign-text span{color:var(--wine)}
+.sign-sub{font-size:clamp(8px,1.1vw,14px);font-weight:800;letter-spacing:.23em;text-align:center}
+.sign-rivet{position:absolute;width:10px;height:10px;border-radius:50%;background:#999;top:10px}.sign-rivet.a{left:12px}.sign-rivet.b{right:12px}
+.placed-layer{position:absolute;inset:0;pointer-events:none}.placed-sticker{position:absolute;max-width:35%;max-height:65%;object-fit:contain;filter:drop-shadow(2px 3px 2px #0004)}
+.street-caption{position:absolute;bottom:16px;left:20px;color:#343b3a;font-size:10px;font-weight:800;letter-spacing:.16em}
+.sticker-tray{background:#fff;border:1px solid #e8dfe1;padding:22px 20px 28px}
+.tray-title{font-size:11px;font-weight:900;letter-spacing:.15em;color:var(--wine)}
+.sticker-board{margin-top:18px;justify-content:flex-start;gap:12px 20px}
+.sticker{touch-action:none;user-select:none;max-width:23%;cursor:url("assets/cursor-hand-wine.svg") 8 2,grab!important}
+.sticker:nth-child(1){width:130px}.sticker:nth-child(2){width:65px}.sticker:nth-child(3),.sticker:nth-child(4){width:90px}.sticker:nth-child(5){width:185px}.sticker:nth-child(6){width:140px}.sticker:nth-child(7){width:120px}.sticker:nth-child(8){width:190px}
+.sticker img{pointer-events:none}
+.drag-ghost{position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%) rotate(-8deg);filter:drop-shadow(4px 7px 5px #0005)}
+@media(max-width:850px){.stickers{padding:55px 5vw}.street-sign{border-width:7px}.street-scene{height:400px}.street-sign{width:87%;height:155px}.sign-text{font-size:clamp(32px,8vw,65px)}}
+
+/* V3: corrected page sequencing, crop-safe stickers and reliable dragging */
+.paper-stage.open .paper-closed .back{visibility:visible}
+.paper-stage.reverse .paper-closed{transform:rotateY(0deg);right:0;width:52%}
+.paper-stage.reverse .paper-closed .front{visibility:visible;}
+.paper-stage.reverse .paper-closed .back{visibility:hidden}
+.paper-stage.reverse .paper-inside{opacity:0}
+.sticker-heading{position:relative;z-index:1}
+.stickers{overflow:hidden}
+.sticker-board{align-items:center}
+.sticker{flex-shrink:0;max-width:min(23%,185px);touch-action:none}
+.sticker img{width:100%;height:auto;object-fit:contain;mix-blend-mode:normal;pointer-events:none}
+.placed-layer{pointer-events:auto}
+.placed-sticker{pointer-events:auto;touch-action:none;user-select:none;cursor:grab!important;max-width:28%;max-height:68%}
+.placed-sticker:active{cursor:grabbing!important}
+.sticker{cursor:grab!important}
+.sticker:active{cursor:grabbing!important}
+body.is-dragging,body.is-dragging *{cursor:grabbing!important;user-select:none!important}
+.drag-ghost{max-height:160px;object-fit:contain}
+.street-sign{overflow:hidden}
+@media(max-width:850px){.sticker{max-width:28%}.sticker-board{gap:12px}.sticker-heading h2{font-size:clamp(40px,9vw,75px)}}
+
+/* Cover-art collection: jewel cases and slide-out CDs */
+.cover-arts{background:#f8f0f3;padding:clamp(42px,5vw,76px) clamp(24px,7vw,110px) 130px;border-top:1px solid #e8dfe1;overflow:hidden}.cover-head{max-width:1050px;margin:0 auto 70px}.cover-head h2{font-size:clamp(58px,9vw,142px);line-height:.88;letter-spacing:-.085em;margin:24px 0}.cover-head h2 span{color:var(--wine)}.cover-head p{max-width:450px;font-size:18px;line-height:1.35;letter-spacing:-.035em}.cd-grid{max-width:1500px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,4vw,75px)}.cd-item{min-width:0}.cd-scene{position:relative;width:85%;aspect-ratio:1/1;margin:0 auto 34px;cursor:url('assets/cursor-hand-wine.svg') 8 2,pointer;outline-offset:12px}.cd-disc{position:absolute;z-index:1;width:93%;aspect-ratio:1;border-radius:50%;left:8%;top:3.5%;background:repeating-radial-gradient(circle at 50% 50%,#d6d8db 0 1px,#f2f4f6 2px 4px,#c6c9cd 5px 6px);box-shadow:10px 12px 22px #31172540,inset 0 0 0 2px #a9a9b0;overflow:hidden;transition:transform .8s cubic-bezier(.2,.75,.2,1)}.disc-print{position:absolute;inset:0;border-radius:50%;background-size:cover;background-position:center;opacity:.8;mix-blend-mode:multiply}.cd-disc:before{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(125deg,#ffffff99,transparent 35%,#fff8 62%,transparent 80%);z-index:1}.disc-hole{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);width:19%;aspect-ratio:1;border-radius:50%;background:#f8f0f3;border:7px solid #b9b9bd;box-shadow:0 0 0 4px #ffffff8a}.cd-case{position:absolute;z-index:2;inset:0;border:2px solid #d5d5d7;background:#fff;box-shadow:7px 12px 20px #37162530, inset 0 0 0 5px #ffffff4d;overflow:hidden;transition:transform .6s}.cd-case img{display:block;width:100%;height:100%;object-fit:cover}.case-gloss{position:absolute;inset:0;background:linear-gradient(112deg,#fff5 0%,transparent 28%,transparent 65%,#fff3 83%,transparent 90%);pointer-events:none}.cd-case:after{content:'';position:absolute;left:0;top:0;bottom:0;width:5%;background:linear-gradient(90deg,#ffffffaa,#00000020,#ffffff99);border-right:1px solid #fff9}.cd-scene:hover .cd-disc,.cd-scene:focus-visible .cd-disc,.cd-scene.revealed .cd-disc{transform:translateX(48%) rotate(90deg)}.cd-scene:hover .cd-case,.cd-scene:focus-visible .cd-case,.cd-scene.revealed .cd-case{transform:translateX(-9%) rotate(-3deg)}.cd-caption{border-top:1px solid var(--wine);padding-top:13px;display:flex;justify-content:space-between;gap:10px;font-size:10px;font-weight:900;letter-spacing:.1em;color:var(--wine)}.cd-caption span:last-child{color:#8e7d83}.paper-stage.reverse .paper-closed .front{!important;visibility:visible}.paper-stage.reverse .paper-closed .back{visibility:hidden}.paper-stage.reverse .paper-closed{transform:rotateY(0deg)!important;right:0;width:52%}.paper-stage.reverse .paper-inside{opacity:0;transform:scaleX(.54)}@media(max-width:900px){.cd-grid{grid-template-columns:1fr 1fr;row-gap:65px}.cover-head{margin-bottom:55px}}@media(max-width:570px){.cd-grid{grid-template-columns:1fr;gap:60px}.cd-scene{width:68%;max-width:300px}.cover-arts{padding-bottom:80px}.cd-caption{max-width:340px;margin:auto}}
+
+/* Three deliberate newspaper states: cover -> open spread -> back cover. */
+.paper-stage.reverse .paper-closed{transform:rotateY(0deg)!important;right:0!important;width:52%!important}
+.paper-stage.reverse .paper-closed .front{visibility:visible!important}
+.paper-stage.reverse .paper-closed .back{visibility:hidden!important}
+.paper-stage.reverse .paper-inside{opacity:0!important;transform:scaleX(.54)!important}
+.paper-stage.open .paper-closed .front{visibility:visible!important}
+.paper-stage.open .paper-closed .back{visibility:visible!important}
+
+/* embedded portfolio version */ .mast{display:none!important} body{overflow:hidden!important} .footer{display:none!important}
+</style></head><body>
+<header class="mast"><strong>05 &nbsp; OFFLINE — PRINT & PHYSICAL</strong><small>PRINT / EDITORIAL / OBJECTS</small></header>
+<section class="intro"><div><div class="eyebrow">PRINT / EDITORIAL / COVER ART</div><h1>ON<br>PAPER<span>.</span></h1></div><p>Newspapers, flyers and printed matter, designed to live beyond the screen.<br><a class="tag explore" href="#objects" id="offlineExploreLink">CLICK TO EXPLORE ↘</a></p></section>
+<main><section class="desk" id="objects" aria-label="Interactive print objects"><div class="paper-area"><div class="object-label">01 / THE NEWSPAPER</div><button class="paper-button" id="paperToggle" aria-label="Open newspaper" aria-pressed="false"><div class="paper-stage" id="paperStage"><div class="paper-inside"><img src="assets/paper-2-left.jpg" alt="Newspaper interior left page"><img src="assets/paper-2-right.jpg" alt="Newspaper interior right page"></div><div class="paper-spine"></div><div class="paper-closed"><img class="front" src="assets/paper-1-left.jpg" alt="Black Limba newspaper cover"><img class="back" src="assets/paper-2-left.jpg" alt="Black Limba newspaper reverse cover"></div></div></button><div class="paper-label"><span class="hint" id="paperHint">↗ CLICK TO OPEN THE NEWSPAPER</span></div></div>
+<div class="flyer-area"><div class="object-label">02 / THE FLYER</div><button class="flyer-button" id="flyerToggle" aria-label="Flip flyer" aria-pressed="false"><div class="flyer-scene"><div class="flyer-card" id="flyerCard"><img src="assets/flyer-front.jpg" alt="OnFit flyer front"><img src="assets/flyer-back.jpg" alt="OnFit flyer back with discount code"></div></div></button><p class="hint" id="flyerHint">↗ CLICK TO FLIP</p></div></section>
+<section class="cover-arts" id="coverArts"><div class="cover-head"><div class="eyebrow">03 / COVER ART</div><h2>SOUND <span>IN COLOUR.</span></h2><p>Three illustrated covers, three different worlds. Hover to pull the record out of its case.</p></div><div class="cd-grid">
+<div class="cd-item"><div class="cd-scene" tabindex="0" aria-label="De mí: hover or focus to reveal the disc"><div class="cd-disc" style="--disc:#d59bbb"><div class="disc-print" style="background-image:url('assets/cover-de-mi.jpg')"></div><div class="disc-hole"></div></div><div class="cd-case"><img src="assets/cover-de-mi.jpg" alt="De mí illustrated cover art"><div class="case-gloss"></div></div></div><div class="cd-caption"><span>01 / DE MÍ</span><span>↗ HOVER TO EXPLORE</span></div></div>
+<div class="cd-item"><div class="cd-scene" tabindex="0" aria-label="OVD: hover or focus to reveal the disc"><div class="cd-disc" style="--disc:#8bd8dc"><div class="disc-print" style="background-image:url('assets/cover-cereales.jpg')"></div><div class="disc-hole"></div></div><div class="cd-case"><img src="assets/cover-cereales.jpg" alt="Colourful illustrated cereal box album cover"><div class="case-gloss"></div></div></div><div class="cd-caption"><span>02 / OVD</span><span>↗ HOVER TO EXPLORE</span></div></div>
+<div class="cd-item"><div class="cd-scene" tabindex="0" aria-label="18/3: hover or focus to reveal the disc"><div class="cd-disc" style="--disc:#b785d8"><div class="disc-print" style="background-image:url('assets/cover-bath.webp')"></div><div class="disc-hole"></div></div><div class="cd-case"><img src="assets/cover-bath.webp" alt="Purple bathroom illustrated cover art"></div></div><div class="cd-caption"><span>03 / 18/3</span><span>↗ HOVER TO EXPLORE</span></div></div>
+</div></section></main>
+<footer class="footer"><span>CLARA / CREATIVE DESIGN</span><span>OFFLINE — PRINT & PHYSICAL</span></footer>
+<script>
+const paper=document.getElementById('paperStage'),paperButton=document.getElementById('paperToggle'),paperHint=document.getElementById('paperHint');
+let paperState=0;
+paperButton.addEventListener('click',()=>{
+ paperState=(paperState+1)%3;
+ paper.classList.toggle('open',paperState===1);
+ paper.classList.toggle('reverse',paperState===2);
+ paperHint.textContent=['↗ CLICK TO OPEN','↗ CLICK TO SEE BACK COVER','↺ CLICK TO RETURN TO FRONT'][paperState];
+ paper.querySelector('.paper-closed .front').src=paperState===2?'assets/paper-1-right.jpg':'assets/paper-1-left.jpg';
+ paperButton.setAttribute('aria-label',['Open newspaper','Show newspaper back cover','Return to newspaper front cover'][paperState]);
+});
+document.getElementById('offlineExploreLink')?.addEventListener('click',e=>{e.preventDefault();window.parent.postMessage({type:'offline-explore'},'*');});
+const flyer=document.getElementById('flyerCard'),flyerButton=document.getElementById('flyerToggle');
+flyerButton.addEventListener('click',()=>{const flipped=flyer.classList.toggle('flipped');flyerButton.setAttribute('aria-pressed',String(flipped));document.getElementById('flyerHint').textContent=flipped?'↖ CLICK TO SEE THE FRONT':'↗ CLICK TO FLIP'});
+document.querySelectorAll('.cd-scene').forEach(scene=>{scene.addEventListener('click',()=>scene.classList.toggle('revealed'));scene.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();scene.classList.toggle('revealed')}})});
+</script>
+<script>
+/* Intrinsic sizing: send the actual last visible element's bottom to the host. */
+(function(){
+ const type='offline-intrinsic-height';
+ let previous=0,queued=false;
+ function report(){
+  queued=false;
+  const main=document.querySelector('main');
+  const footer=document.querySelector('footer.outro');
+  const last=footer && getComputedStyle(footer).display!=='none' ? footer : main;
+  if(!last)return;
+  const rect=last.getBoundingClientRect();
+  const height=Math.ceil(rect.bottom+window.scrollY);
+  if(height>500 && height<25000 && Math.abs(height-previous)>2){
+   previous=height;
+   window.parent.postMessage({type,height},'*');
+  }
+ }
+ function schedule(){if(!queued){queued=true;requestAnimationFrame(report)}}
+ window.addEventListener('message',e=>{if(e.data?.type==='measure-project-height'){previous=0;schedule()}});
+ window.addEventListener('load',schedule);
+ window.addEventListener('resize',schedule);
+ document.addEventListener('DOMContentLoaded',()=>{
+  const main=document.querySelector('main');
+  if(main)new ResizeObserver(schedule).observe(main);
+  const footer=document.querySelector('footer.outro');
+  if(footer)new ResizeObserver(schedule).observe(footer);
+  document.querySelectorAll('img,video').forEach(el=>el.addEventListener('load',schedule));
+  schedule();setTimeout(schedule,150);setTimeout(schedule,750);
+ });
+})();
+</script>
+</body></html>
