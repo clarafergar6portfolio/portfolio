@@ -1270,6 +1270,13 @@ a,a *,button,button *,[role="button"],[role="button"] *,input[type="submit"],inp
 /* Let embed content measurement own the heights; no minimums. */
 .sales-2026-embed,.offline-embed{min-height:0!important}
 
-/* Child-reported intrinsic height; fallback until load. */
-.sales-2026-embed{height:1800px}
-.offline-embed{height:1800px}
+/* Portfolio refinement: consistent readable small headings without changing layout. */
+.hero-bottom{font-size:clamp(10px,.9vw,13px)}
+.start-section-head,.start-subhead,.start-kicker{font-size:clamp(10px,.85vw,13px)}
+.start-case .organic-content .start-subhead span{font-size:clamp(10px,.8vw,12px)}
+.start-phone-hint,.micro-note{font-size:clamp(10px,.78vw,12px)}
+#aboutStoryText{white-space:pre-line;line-height:1.55}
+
+/* Rebrand starts compact and is expanded to its actual footer by the existing measurement script. */
+.sales-2026-embed{height:1600px}
+.offline-embed{height:2900px}

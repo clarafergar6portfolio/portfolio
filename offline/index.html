@@ -70,10 +70,14 @@ body.is-dragging,body.is-dragging *{cursor:grabbing!important;user-select:none!i
 .paper-stage.open .paper-closed .back{visibility:visible!important}
 
 /* embedded portfolio version */ .mast{display:none!important} body{overflow:hidden!important} .footer{display:none!important}
+
+/* Readable labels and clearer interaction without changing the newspaper geometry. */
+.object-label,.eyebrow{font-size:clamp(12px,.9vw,14px)}
+.paper-label .hint{font-size:clamp(12px,1vw,15px);font-weight:700;color:var(--wine)}
 </style></head><body>
 <header class="mast"><strong>05 &nbsp; OFFLINE — PRINT & PHYSICAL</strong><small>PRINT / EDITORIAL / OBJECTS</small></header>
-<section class="intro"><div><div class="eyebrow">PRINT / EDITORIAL / COVER ART</div><h1>ON<br>PAPER<span>.</span></h1></div><p>Newspapers, flyers and printed matter, designed to live beyond the screen.<br><a class="tag explore" href="#objects" id="offlineExploreLink">CLICK TO EXPLORE ↘</a></p></section>
-<main><section class="desk" id="objects" aria-label="Interactive print objects"><div class="paper-area"><div class="object-label">01 / THE NEWSPAPER</div><button class="paper-button" id="paperToggle" aria-label="Open newspaper" aria-pressed="false"><div class="paper-stage" id="paperStage"><div class="paper-inside"><img src="assets/paper-2-left.jpg" alt="Newspaper interior left page"><img src="assets/paper-2-right.jpg" alt="Newspaper interior right page"></div><div class="paper-spine"></div><div class="paper-closed"><img class="front" src="assets/paper-1-left.jpg" alt="Black Limba newspaper cover"><img class="back" src="assets/paper-2-left.jpg" alt="Black Limba newspaper reverse cover"></div></div></button><div class="paper-label"><span class="hint" id="paperHint">↗ CLICK TO OPEN THE NEWSPAPER</span></div></div>
+<section class="intro"><div><div class="eyebrow">PRINT / EDITORIAL / COVER ART</div><h1>ON<br>PAPER<span>.</span></h1></div><p>Newspapers, flyers and printed matter, designed to live beyond the screen.<br><a class="tag explore" href="#objects" id="offlineExploreLink">CLICK THE NEWSPAPER ↘</a></p></section>
+<main><section class="desk" id="objects" aria-label="Interactive print objects"><div class="paper-area"><div class="object-label">01 / THE NEWSPAPER</div><button class="paper-button" id="paperToggle" aria-label="Open newspaper" aria-pressed="false"><div class="paper-stage" id="paperStage"><div class="paper-inside"><img src="assets/paper-2-left.jpg" alt="Newspaper interior left page"><img src="assets/paper-2-right.jpg" alt="Newspaper interior right page"></div><div class="paper-spine"></div><div class="paper-closed"><img class="front" src="assets/paper-1-left.jpg" alt="Black Limba newspaper cover"><img class="back" src="assets/paper-2-left.jpg" alt="Black Limba newspaper reverse cover"></div></div></button><div class="paper-label"><span class="hint" id="paperHint">↗ CLICK TO OPEN · CLICK AGAIN TO TURN THE PAGE</span></div></div>
 <div class="flyer-area"><div class="object-label">02 / THE FLYER</div><button class="flyer-button" id="flyerToggle" aria-label="Flip flyer" aria-pressed="false"><div class="flyer-scene"><div class="flyer-card" id="flyerCard"><img src="assets/flyer-front.jpg" alt="OnFit flyer front"><img src="assets/flyer-back.jpg" alt="OnFit flyer back with discount code"></div></div></button><p class="hint" id="flyerHint">↗ CLICK TO FLIP</p></div></section>
 <section class="cover-arts" id="coverArts"><div class="cover-head"><div class="eyebrow">03 / COVER ART</div><h2>SOUND <span>IN COLOUR.</span></h2><p>Three illustrated covers, three different worlds. Hover to pull the record out of its case.</p></div><div class="cd-grid">
 <div class="cd-item"><div class="cd-scene" tabindex="0" aria-label="De mí: hover or focus to reveal the disc"><div class="cd-disc" style="--disc:#d59bbb"><div class="disc-print" style="background-image:url('assets/cover-de-mi.jpg')"></div><div class="disc-hole"></div></div><div class="cd-case"><img src="assets/cover-de-mi.jpg" alt="De mí illustrated cover art"><div class="case-gloss"></div></div></div><div class="cd-caption"><span>01 / DE MÍ</span><span>↗ HOVER TO EXPLORE</span></div></div>
@@ -88,7 +92,7 @@ paperButton.addEventListener('click',()=>{
  paperState=(paperState+1)%3;
  paper.classList.toggle('open',paperState===1);
  paper.classList.toggle('reverse',paperState===2);
- paperHint.textContent=['↗ CLICK TO OPEN','↗ CLICK TO SEE BACK COVER','↺ CLICK TO RETURN TO FRONT'][paperState];
+ paperHint.textContent=['↗ CLICK TO OPEN · CLICK AGAIN TO TURN THE PAGE','↗ CLICK TO TURN TO THE BACK COVER','↺ CLICK TO RETURN TO FRONT'][paperState];
  paper.querySelector('.paper-closed .front').src=paperState===2?'assets/paper-1-right.jpg':'assets/paper-1-left.jpg';
  paperButton.setAttribute('aria-label',['Open newspaper','Show newspaper back cover','Return to newspaper front cover'][paperState]);
 });
@@ -96,37 +100,4 @@ document.getElementById('offlineExploreLink')?.addEventListener('click',e=>{e.pr
 const flyer=document.getElementById('flyerCard'),flyerButton=document.getElementById('flyerToggle');
 flyerButton.addEventListener('click',()=>{const flipped=flyer.classList.toggle('flipped');flyerButton.setAttribute('aria-pressed',String(flipped));document.getElementById('flyerHint').textContent=flipped?'↖ CLICK TO SEE THE FRONT':'↗ CLICK TO FLIP'});
 document.querySelectorAll('.cd-scene').forEach(scene=>{scene.addEventListener('click',()=>scene.classList.toggle('revealed'));scene.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();scene.classList.toggle('revealed')}})});
-</script>
-<script>
-/* Intrinsic sizing: send the actual last visible element's bottom to the host. */
-(function(){
- const type='offline-intrinsic-height';
- let previous=0,queued=false;
- function report(){
-  queued=false;
-  const main=document.querySelector('main');
-  const footer=document.querySelector('footer.outro');
-  const last=footer && getComputedStyle(footer).display!=='none' ? footer : main;
-  if(!last)return;
-  const rect=last.getBoundingClientRect();
-  const height=Math.ceil(rect.bottom+window.scrollY);
-  if(height>500 && height<25000 && Math.abs(height-previous)>2){
-   previous=height;
-   window.parent.postMessage({type,height},'*');
-  }
- }
- function schedule(){if(!queued){queued=true;requestAnimationFrame(report)}}
- window.addEventListener('message',e=>{if(e.data?.type==='measure-project-height'){previous=0;schedule()}});
- window.addEventListener('load',schedule);
- window.addEventListener('resize',schedule);
- document.addEventListener('DOMContentLoaded',()=>{
-  const main=document.querySelector('main');
-  if(main)new ResizeObserver(schedule).observe(main);
-  const footer=document.querySelector('footer.outro');
-  if(footer)new ResizeObserver(schedule).observe(footer);
-  document.querySelectorAll('img,video').forEach(el=>el.addEventListener('load',schedule));
-  schedule();setTimeout(schedule,150);setTimeout(schedule,750);
- });
-})();
-</script>
-</body></html>
+</script></body></html>

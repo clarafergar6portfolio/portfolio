@@ -45,8 +45,8 @@
     </div>
 
     <div class="hero-bottom">
-      <span>DRAG THE PHOTO AROUND ↗</span>
       <a href="#projects">SELECTED WORK ↓</a>
+      <span>DRAG THE PHOTO AROUND ↗</span>
     </div>
   </section>
 
@@ -102,7 +102,7 @@
             <p class="post-carousel-note"><a href="https://www.instagram.com/p/DcMGVoejsBS/?img_index=3" target="_blank" rel="noopener noreferrer">EXPLORE THE POSTS ↗</a> <span class="post-carousel-counter">01 — 03 / 03</span></p>
             <div class="organic-grid">
               <div class="feed-preview"><div class="start-subhead"><b>INSTAGRAM FEED</b><span>02 / 03</span></div><div class="start-phone"><div class="start-phone-island"></div><div class="start-phone-screen" tabindex="0" aria-label="Scroll the START Instagram feed"><div class="start-phone-appbar"><span>‹</span><b>blacklimba <small>✓</small></b><span>⋯</span></div><div class="start-ig-profile"><div class="start-ig-avatar">BL</div><div class="start-ig-profile-info"><strong>blacklimba</strong><span>Black Limba · Clothing brand</span><small>Activewear for every version of you.</small></div></div><div class="start-ig-stats"><span><b>1,208</b> posts</span><span><b>Followers</b></span><span><b>Following</b></span></div><div class="start-ig-buttons"><span>Following</span><span>Message</span></div><div class="start-ig-tabs">▦ <span>⌁</span> <span>♙</span></div><img src="assets/start-instagram-feed.jpg" alt="Black Limba START Instagram feed, scroll to see all"></div><div class="start-phone-home"></div></div><p class="start-phone-hint">SCROLL TO EXPLORE THE FEED ↓</p></div>
-              <div class="film-preview"><div class="start-subhead"><b>TEASER FILM</b><span>03 / 03</span></div><div class="start-film-link"><video class="start-feature-image" controls playsinline preload="metadata" poster="assets/start-before-v32.jpg"><source src="assets/start-teaser-film.mp4" type="video/mp4">Your browser does not support video.</video></div><p class="start-phone-hint">TEASER CONCEPT FILM · EDITED BY ME</p></div>
+              <div class="film-preview"><div class="start-subhead"><b>TEASER FILM</b><span>03 / 03</span></div><div class="start-film-link"><video class="start-feature-image" controls playsinline preload="metadata" poster="assets/start-before-v32.jpg"><source src="assets/start-teaser-film.mp4" type="video/mp4">Your browser does not support video.</video></div><p class="start-phone-hint">TEASER CONCEPT FILM</p></div>
             </div>
             </div>
           </section>
@@ -206,7 +206,7 @@
       </button>
       <div class="work-panel">
         <div class="work-panel-inner project offline" style="padding:0;max-width:none;overflow:visible;">
-          <iframe class="offline-embed" title="OFFLINE — Print, physical and cover art" src="offline/index.html" loading="lazy" scrolling="no" style="display:block;width:100%;border:0;height:1800px;background:#fff;" onload="window.resizeOfflineFrame&&window.resizeOfflineFrame()"></iframe>
+          <iframe class="offline-embed" title="OFFLINE — Print, physical and cover art" src="offline/index.html" loading="lazy" scrolling="no" style="display:block;width:100%;border:0;background:#fff;" onload="window.resizeOfflineFrame&&window.resizeOfflineFrame()"></iframe>
         </div>
       </div>
     </article>
@@ -234,7 +234,7 @@
       </div>
     </div>
     <a class="contact-email" href="mailto:clarafergar6@gmail.com">CLARAFERGAR6@GMAIL.COM ↗</a>
-    <footer><span>MADRID / OPEN TO RELOCATE</span><span><a href="https://www.linkedin.com/in/clara-fernandez-garcia-art/" target="_blank" rel="noopener">LINKEDIN ↗</a></span><span>© 2026</span></footer>
+    <footer><span>MADRID / WILLING TO RELOCATE</span><span><a href="https://www.linkedin.com/in/clara-fernandez-garcia-art/" target="_blank" rel="noopener">LINKEDIN ↗</a></span><span>© 2026</span></footer>
   </section>
 </main>
 
@@ -242,32 +242,68 @@
 <script src="js/newsletter-data.js"></script>
 <script src="js/main.js"></script>
 <script>
-/* Child projects report their own document height. No viewport-based guesses. */
+/* Embedded project sizing: measure actual content rather than the iframe viewport. */
 (function(){
- const entries={sales:document.querySelector('.sales-2026-embed'),offline:document.querySelector('.offline-embed')};
- function apply(frame,height){
-   if(!frame||!Number.isFinite(height)||height<500||height>25000)return;
-   const next=Math.ceil(height+2);
-   if(Math.abs(frame.offsetHeight-next)>3)frame.style.height=next+'px';
+ for(const [selector,key] of [['.offline-embed','offline']]){
+  const frame=document.querySelector(selector), item=frame?.closest('.work-item');
+  if(!frame||!item)continue;
+  let pending=0, ro;
+  function fit(){
+   if(!item.classList.contains('open')||frame.clientWidth<200)return;
+   try{
+    const d=frame.contentDocument;if(!d||!d.body)return;
+    const target=key==='sales'?d.querySelector('footer.outro'):d.querySelector('.cover-arts')||d.querySelector('main');
+    if(!target)return;
+    const rect=target.getBoundingClientRect();
+    const top=rect.top+d.defaultView.scrollY;
+    const bottom=top+rect.height;
+    const height=Math.ceil(key==='sales' ? Math.max(bottom, target.offsetTop + target.offsetHeight, (d.querySelector('main')?.offsetTop||0)+(d.querySelector('main')?.offsetHeight||0)) + 20 : bottom+8);
+    if(height>600&&height<20000&&Math.abs(frame.offsetHeight-height)>4)frame.style.height=height+'px';
+   }catch(e){}
+  }
+  function schedule(){cancelAnimationFrame(pending);pending=requestAnimationFrame(fit)}
+  frame.addEventListener('load',()=>{
+   try{
+    const d=frame.contentDocument;
+    if(ro)ro.disconnect();
+    ro=new ResizeObserver(schedule);
+    const target=key==='sales'?d.querySelector('main'):d.querySelector('main');
+    if(target)ro.observe(target);
+    const footer=d.querySelector('footer.outro');if(footer)ro.observe(footer);if(key==='offline'){const end=d.querySelector('.cover-arts');if(end)ro.observe(end)}
+    d.querySelectorAll('img,video').forEach(el=>el.addEventListener('load',schedule));
+   }catch(e){}
+   [0,100,400,1200,2500].forEach(ms=>setTimeout(schedule,ms));
+  });
+  item.querySelector('.work-toggle')?.addEventListener('click',()=>[0,100,400,900,2000,3500].forEach(ms=>setTimeout(schedule,ms)));
+  window.addEventListener('resize',schedule,{passive:true});
+  if(key==='sales'){
+   window.addEventListener('message',event=>{if(event.source===frame.contentWindow&&event.data?.type==='sales2026-height')schedule()});
+  }
+  if(key==='offline'){
+   window.resizeOfflineFrame=schedule;
+   window.addEventListener('message',event=>{
+    if(event.source!==frame.contentWindow||event.data?.type!=='offline-explore')return;
+    const target=frame.contentDocument?.getElementById('objects');if(!target)return;
+    const y=frame.getBoundingClientRect().top+window.scrollY+target.getBoundingClientRect().top;
+    window.scrollTo({top:Math.max(0,y-65),behavior:'smooth'});
+   });
+  }
  }
- window.addEventListener('message',event=>{
-   for(const [key,frame] of Object.entries(entries)){
-     if(event.source!==frame.contentWindow)continue;
-     if(event.data?.type===key+'-intrinsic-height')apply(frame,Number(event.data.height));
-     if(key==='offline'&&event.data?.type==='offline-explore'){
-       const target=frame.contentDocument?.getElementById('objects');
-       if(target){const y=frame.getBoundingClientRect().top+window.scrollY+target.getBoundingClientRect().top;window.scrollTo({top:Math.max(0,y-65),behavior:'smooth'});}
-     }
-   }
+})();
+
+/* SALES: trust content-side intrinsic measurement, not the iframe viewport. */
+(function(){
+ const frame=document.querySelector('.sales-2026-embed');
+ if(!frame)return;
+ function request(){try{frame.contentWindow.postMessage({type:'sales-measure-now'},'*')}catch(e){}}
+ window.addEventListener('message',e=>{
+  if(e.source!==frame.contentWindow||e.data?.type!=='sales-content-height')return;
+  const height=Math.ceil(Number(e.data.height));
+  if(height>500&&height<25000&&Math.abs(frame.offsetHeight-height)>3)frame.style.setProperty('height',height+'px','important');
  });
- for(const [key,frame] of Object.entries(entries)){
-   if(!frame)continue;
-   function request(){try{frame.contentWindow.postMessage({type:'measure-project-height'},'*')}catch(e){}}
-   frame.addEventListener('load',()=>{request();setTimeout(request,150);setTimeout(request,600)});
-   frame.closest('.work-item')?.querySelector('.work-toggle')?.addEventListener('click',()=>{setTimeout(request,50);setTimeout(request,400)});
-   window.addEventListener('resize',request,{passive:true});
-   if(key==='offline')window.resizeOfflineFrame=request;
- }
+ frame.addEventListener('load',()=>[0,100,500,1500].forEach(t=>setTimeout(request,t)));
+ frame.closest('.work-item')?.querySelector('.work-toggle')?.addEventListener('click',()=>[0,100,400,900,2000].forEach(t=>setTimeout(request,t)));
+ window.addEventListener('resize',request,{passive:true});
 })();
 </script>
 <style>
